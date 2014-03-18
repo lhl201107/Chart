@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>JSBridge Test</title>
+    <script src="./TGJSBridge.bundle/TGJSBridge.js"></script>
+</head>
+
+<body>
+
+    <div style="margin-top:50px;">
+        <input type="button" name="" value="Hello cocoa" onclick="process()" />
+    </div>
+
+
+    <script type="text/javascript">
+    function log(text){
+        var tmp = document.createElement('p');
+        tmp.innerText = text;
+        document.body.appendChild(tmp);
+    }
+    
+    
+    var click_count = 0;
+    
+    
+    function process()
+    {
+        jsBridge.postNotification('oc',{message:'hello oc:'+(++click_count)});//js向oc发送一个字典数据
+    }
+    
+    
+    jsBridge.bind('test', function(object){//js获取从oc发送过来的字典数据
+                  
+                  var arr =object.message;
+                  for(var i = 0 ;i<arr.length;i++){
+                  log(arr[i]);
+
+                  }
+                  
+                  
+                  
+    });
+    
+    
+    
+    </script> 
+
+</body>
+</html>
+
