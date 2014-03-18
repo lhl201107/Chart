@@ -34,6 +34,10 @@
 
     NSURL* url = [[NSBundle mainBundle] URLForResource:@"dongtai" withExtension:@"html"];
     [WebView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    NSLog(@"url = %@",[NSString stringWithFormat:@"%@",url]);
+    
+    
 }
 
 
